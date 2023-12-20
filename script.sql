@@ -39,3 +39,13 @@ CREATE TABLE statistiques (
     donnees_stats VARCHAR(255),
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs(id_utilisateur)
 );
+
+
+
+
+-- inserttion dans la table roles
+INSERT INTO roles (role_name, description) VALUES
+('admin', 'administration de youcode '),
+('formateur', 'Formateur dans youcode '),
+('apprenant', 'Apprenant dans youcode');
+
