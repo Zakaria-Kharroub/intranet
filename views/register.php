@@ -19,24 +19,26 @@
             <h2 class="text-center">Sign Up</h2>
           </div>
           <div class="card-body">
-            <form>
+            <form action='index.php' method='POST'>
+                
               <div class="form-group">
                 <label for="firstName">Prénom</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Entrez votre prénom">
+                <input type="text" class="form-control" id="firstName" name='nom' placeholder="Entrez votre prénom">
               </div>
               <div class="form-group">
                 <label for="lastName">Nom</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Entrez votre nom">
+                <input type="text" class="form-control" id="lastName" name='prenom' placeholder="Entrez votre nom">
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Entrez votre adresse email">
+                <input type="email" class="form-control" id="email" name='email' placeholder="Entrez votre adresse email">
               </div>
               <div class="form-group">
                 <label for="password">Mot de passe</label>
-                <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
+                <input type="password" class="form-control" id="password" name='password' placeholder="Entrez votre mot de passe">
               </div>
-              <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+              <input type="hidden" value='3' name='id_role' >
+              <button type="submit" name='submit' value='register' class="btn btn-primary btn-block">S'inscrire</button>
             </form>
             <p class='mt-3'>
               vous avez déjà un compte ? 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,20 +20,21 @@
           <h2 class="text-center">Login</h2>
         </div>
         <div class="card-body">
-          <form>
+          <form action='index.php' method='POST'>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter your email">
+              <input type="email" class="form-control" id="email" name='email' placeholder="Enter your email" required>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Enter your password">
+              <input type="password" class="form-control" id="password" name='password' placeholder="Enter your password" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" class="btn btn-primary btn-block" name='submit' value='login'>Login</button>
           </form>
             <p class='mt-3'>
                 Don't have an account ? 
                 <a href="register.php">Sign Up</a>
+            </p>
         </div>
       </div>
     </div>
