@@ -20,8 +20,8 @@ class Database {
         return $this->conn;
     }
 }
-$Database = new Database();
-$Database->getConnect();
+// $Database = new Database();
+// $Database->getConnect();
 
 
 ?>
