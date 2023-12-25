@@ -10,6 +10,8 @@ if (isset($_GET['action'])) {
             $UserController->listFormateurs();
             break;
 
+        case 'listUsers' : $UserController->listUsers();
+        break;
 
         case 'ajouterFormateur': 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,6 +26,24 @@ if (isset($_GET['action'])) {
                 $UserController->ajouterFormateur($nom, $prenom,$email, $password,$id_class);
             }
             break;
+        case 'ajouterApprenant':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+                $nom = $_POST['nom'];
+                $prenom = $_POST['prenom'];
+                $email =$_POST['email'];
+                $password = $_POST['password'];
+                $id_class= $_POST['id_class'];
+
+                $UserController->ajouterApprenant($nom, $prenom,$email, $password,$id_class);
+            }
+            break;
+
+             
+
+
+
+
         case 'updateFormateur':
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $id_utilisateur =$_POST['id_utilisateur'];
@@ -36,6 +56,37 @@ if (isset($_GET['action'])) {
                 $UserController->updateFormateur($id_utilisateur, $nom, $prenom, $email, $password,$id_class);
             }
             break;
+
+
+        case 'updateApprenant':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $id_utilisateur =$_POST['id_utilisateur'];
+                $nom =$_POST['nom'];
+                $prenom =$_POST['prenom'];
+                $email= $_POST['email'];
+                $password = $_POST['password'];
+                $id_class = $_POST['id_class'];
+
+                $UserController->updateApprenant($id_utilisateur, $nom, $prenom, $email, $password,$id_class);
+            }
+            break;
+
+        case 'deleteFormateur':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $id_utilisateur = $_POST['id_utilisateur'];
+                $UserController->deleteFormateur($id_utilisateur);
+            }
+            break;
+        
+        case 'deleteApprenant':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $id_utilisateur = $_POST['id_utilisateur'];
+                $UserController->deleteApprenant($id_utilisateur);
+            }
+            break;
+
+
+
         default:
             $UserController->listUsers();
             break;
