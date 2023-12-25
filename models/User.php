@@ -10,17 +10,19 @@ class User {
     }
 
     public function getUsers() {
-        $query = 'SELECT * FROM utilisateurs WHERE id_role = 3';
+        $query = 'SELECT * FROM utilisateurs
+         WHERE id_role = 3';
         $stmt = $this->connection->query($query);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    
     public function getFormateurs() {
         $query = 'SELECT utilisateurs.*, classes.name_class 
-                  FROM utilisateurs 
-                  LEFT JOIN classes ON utilisateurs.id_class = classes.id_class
+                FROM utilisateurs 
+                    LEFT JOIN classes ON utilisateurs.id_class = classes.id_class
                   WHERE utilisateurs.id_role = 2';
-        $stmt = $this->connection->query($query);
+         $stmt = $this->connection->query($query);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -31,9 +33,18 @@ class User {
     }
 
     public function ajouterFormateur($nom, $prenom, $email, $password, $id_class) {
-        $query = 'INSERT INTO utilisateurs (nom, prenom, email, password, id_role, id_class) VALUES (?, ?, ?, ?, 2, ?)';
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute([$nom, $prenom, $email, password_hash($password, PASSWORD_DEFAULT), $id_class]);
+        $query = 'INSERT INTO utilisateurs (nom,prenom, email,password, id_role, id_class) VALUES (?,?,?,?, 2, ?)';
+         $stmt = $this->connection->prepare($query);
+          $stmt->execute([$nom,$prenom,$email, password_hash($password,PASSWORD_DEFAULT), $id_class]);
+         return $stmt;
+    }
+
+    public function updateFormateur($id_utilisateur,$nom,$prenom, $email,$password, $id_class) {
+        $query = 'UPDATE utilisateurs 
+                  SET nom = ?, prenom=?, email= ?, password =?, id_class =? 
+                  WHERE id_utilisateur =?';
+         $stmt = $this->connection->prepare($query);
+          $stmt->execute([$nom,$prenom,$email,password_hash($password,PASSWORD_DEFAULT), $id_class, $id_utilisateur]);
         return $stmt;
     }
     

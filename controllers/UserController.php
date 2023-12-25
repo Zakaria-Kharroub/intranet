@@ -7,22 +7,28 @@ class UserController {
 
     public function listFormateurs() {
         $user = new User();
-        $users = $user->getFormateurs();
-        $classes = $user->getClasses(); 
+        $users= $user->getFormateurs();
+        $classes= $user->getClasses(); 
         require 'views/adminFormateur.php';
     }
 
     public function listUsers() {
-        $user = new User();
+        $user =new User();
         $users = $user->getUsers();
         require 'views/admin.php';
     }
 
-     public function ajouterFormateur($nom, $prenom, $email, $password, $id_class) {
+     public function ajouterFormateur($nom, $prenom,$email,$password,$id_class) {
         $user = new User();
-        $user->ajouterFormateur($nom, $prenom, $email, $password, $id_class);
+        $user->ajouterFormateur($nom, $prenom, $email,$password, $id_class);
         header('location: index.php?action=listFormateurs');
     }
+
+    public function updateFormateur($id_utilisateur, $nom, $prenom, $email, $password, $id_class) {
+        $user = new User();
+        $user->updateFormateur($id_utilisateur, $nom, $prenom, $email, $password, $id_class);
+        header('location: index.php?action=listFormateurs');
+    }  
     
 
 }
