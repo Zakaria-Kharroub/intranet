@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'layout/head.php' ?>
+<?php include_once 'layout/head.php' ?>
 
 <body>
     <div class='all-body'>
-        <?php include 'layout/navbar.php' ?>
+        <?php include_once 'layout/navbar.php' ?>
 
         <!-- Sidebar -->
         <div class="container-fluid">
             <div class="row">
-                <?php include 'layout/sidebar.php' ?>
+                <?php include_once 'layout/sidebar.php' ?>
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 main-content">
                     <center>
@@ -42,7 +42,10 @@
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal<?php echo $user['id_utilisateur']; ?>">
                                                 Modifier
                                             </button>
-                                            <button type="button" class="btn btn-danger">suprimer</button>
+                                            <form action="index.php?action=deleteFormateur" method="post" style="display: inline-block;">
+                                                 <input type="hidden" name="id_utilisateur" value="<?php echo $user['id_utilisateur']; ?>">
+                                                 <button type="submit" class="btn btn-danger">Supprimer</button>
+                                            </form>
                                         </td>
                                     </tr>
 
